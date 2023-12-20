@@ -1,4 +1,4 @@
-let levelOne =[
+let level1 =[
   [1,0,1,0,1],
   [1,0,1,1,1],
   [1,1,0,1,1],
@@ -38,14 +38,16 @@ let levelThree =[
 ]
 
 let mazeArray = level1;
+console.log(mazeArray)
+
   let maze = document.getElementById('maze-container')
-  let tank = document.getElementbyId('labyrinth-tank')
-  let exit = document.getElementbyId('pearly-gates')
+  let tank = document.getElementById('labyrinth-tank')
+  let exit = document.getElementById('pearly-gates')
   
   // ----Create maze------
   function createMaze(){
     for (let i = 0; i< mazeArray.length; i++){
-      let row = document.getElementById('div');
+      let row = document.getElementById('maze-container');
       row.classList.add('row');
       for(let j = 0; j< mazeArray[i].length; j++){
         let cell= document.createElement('div');
@@ -57,7 +59,7 @@ let mazeArray = level1;
         row.appendChild(cell);
       }
       maze.appendChild(row)
-    }
+    }}
     
 //     ----Function to create maze on button click----
     // async function(){
@@ -74,5 +76,5 @@ let mazeArray = level1;
   // ----Function that compares time and returns score based on time left----------
 
   // -----Function that displays key movements as steps and displays total steps until maze completion
-  
+
   // -----Function that spins maze on lv2 and lv3--------
