@@ -10,27 +10,62 @@
 }
 
 body{
-    background-color: purple;
     margin: 0;
     padding: 0;
-}
-
-h1{
-    font-family: 'Horror Type', sans-serif;
-    color: white;
-    font-size: 22em;
-                                                
-}
-
-main{
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100vw;
     height: 100vh;
+    background-color: dodgerblue; 
 }
-
+h1{
+  font-size: 200px;
+  color: white;
+  font-family: 'Horror Type', sans-serif;
+/*    */margin
+}
 .button-container{
     display: flex;
     justify-content: space-around;
+  
+}
+
+#maze-container{
+  border: 10px solid black;
+}#labyrinth-tank{
+    width: 100px;
+    length: 100px;
+
+}
+
+#pearly-gates{
+    width: 100px;
+    length: 100px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: dodgerblue; 
+}
+h1{
+  font-size: 200px;
+  color: white;
+  font-family: 'Horror Type', sans-serif;
+/*    */margin
+}
+.button-container{
+    display: flex;
+    justify-content: space-around;
+  
+}
+
+#maze-container{
+  border: 10px solid black;
 }
