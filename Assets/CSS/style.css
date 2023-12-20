@@ -1,0 +1,36 @@
+#labyrinth-tank{
+    width: 100px;
+    length: 100px;
+
+}
+
+#pearly-gates{
+    width: 100px;
+    length: 100px;
+}
+
+body{
+    background-color: purple;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-family: 'Horror Type', sans-serif;
+    color: white;
+    font-size: 22em;
+                                                
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-around;
+}
