@@ -6,6 +6,37 @@ let levelOne =[
   [1,1,1,0,1],
 ]
 
+let levelTwo =[
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+]
+
+let levelThree =[
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+]
+
 let mazeArray = level1;
   let maze = document.getElementById('maze-container')
   let tank = document.getElementbyId('labyrinth-tank')
@@ -41,3 +72,7 @@ let mazeArray = level1;
   // ----Function that generates timer-------
   
   // ----Function that compares time and returns score based on time left----------
+
+  // -----Function that displays key movements as steps and displays total steps until maze completion
+  
+  // -----Function that spins maze on lv2 and lv3--------
