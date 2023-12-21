@@ -40,9 +40,9 @@ let levelThree =[
 let mazeArray = level1;
 console.log(mazeArray)
 
-  let maze = document.getElementById('maze-container')
-  let tank = document.getElementById('labyrinth-tank')
-  let exit = document.getElementById('pearly-gates')
+  let maze = document.getElementById('maze-container');
+  let tank = document.getElementById('labyrinth-tank');
+  let exit = document.getElementById('pearly-gates');
   
   // ----Create maze------
   function createMaze(){
@@ -58,7 +58,7 @@ console.log(mazeArray)
         }
         row.appendChild(cell);
       }
-      maze.appendChild(row)
+      maze.appendChild(row);
     }}
     
 //     ----Function to create maze on button click----
@@ -67,14 +67,18 @@ console.log(mazeArray)
     // }
     
   // ----Function that lets player move through maze
+  function move(){}
   
   // ------Function that checks if player entered exit cell___
-  
+  function checkExit(){}
   
   // ----Function that generates timer-------
-  
+  function startTimer()
+
   // ----Function that compares time and returns score based on time left----------
 
   // -----Function that displays key movements as steps and displays total steps until maze completion
+function stepCounter(){}
 
   // -----Function that spins maze on lv2 and lv3--------
+  function spinMaze(){}
