@@ -1,12 +1,12 @@
 #labyrinth-tank{
-    width: 5em;
-    length: 5em;
+    width: 10px;
+    length: 10px;
 
 }
 
 #pearly-gates{
-    width: 5em;
-    length: 5em;
+    width: 10px;
+    length: 10px;
 }
 
 body{
@@ -35,13 +35,13 @@ h1{
 }
 
 #maze-container{
-  border: 10px solid black;
-  display: flex;
-  flex-direction: column;
-  width: ;
-  height: ;
-  
-}
+    border: 10px solid black;
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+
+  }
 
 
 .row{
@@ -50,9 +50,9 @@ h1{
 }
 
 .cell{
-    width: 10em;
-    height: 10em;
-    border: 10em solid black;
+    width: 10px;
+    height: 10px;
+    border: 10px solid black;
     background-color: white;
 }
 
@@ -82,11 +82,8 @@ h1{
 /*    */margin
 }
 .button-container{
-    display: flex;
+    display: flex; 
     justify-content: space-around;
   
 }
 
-#maze-container{
-  border: 10px solid black;
-}
