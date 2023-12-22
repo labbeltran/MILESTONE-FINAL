@@ -14,17 +14,20 @@
 
     <main>
         <div class="button-container">
-            <select id="levelselect">
+            <select title="levels" id="levelselect">
                 <option value="1">Level 1</option>
                 <option value="2">Level 2</option>
                 <option value="3">Level 3</option>
             </select>
             <button onclick="createMaze()">Begin!</button>
         </div>
+        <div id="timer">Timer: </div>
+        <div id="move-counter">Moves</div>
 
-        <div id="maze-container">
-            <img src="./Assets/img/LabyrinthTank 2.jpg" alt="labyrinth-tank" id="labyrinth-tank">
+        <div id="maze-container" class="maze">
+            <img src="./Assets/img/LabyrinthTank 2.jpg" alt="labyrinth-tank" id="labyrinth-tank"> 
             <img src="./Assets/img/pearly-gates.jpg" alt="pearly-gates" id="pearly-gates">
+            
         </div>
     </main>
 
@@ -32,6 +35,6 @@
         <!-- Add any footer content if needed -->
     </footer>
 
-    <script src="./Assets/JSS/index.js" defer></script>
+    <script src="./Assets/JSS/index.js"></script>
 </body>
 </html>
