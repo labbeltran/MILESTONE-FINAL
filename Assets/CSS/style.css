@@ -1,13 +1,13 @@
 #labyrinth-tank {
-    width: 50px;
-    height: 50px;
-    z-index: 2;
+    width: 5px;
+    height: 5px;
+    
 }
 
 #pearly-gates {
-    width: 50px;
-    height: 50px;
-    z-index: 2;
+    width: 5px;
+    height: 5px;
+    
 }
 
  body {
@@ -27,9 +27,20 @@ main{
     align-items: center;
 }
 
-.button-container {
+.game-board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
-} 
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+
 
 #maze-container{
     display: grid;
@@ -39,6 +50,11 @@ main{
     grid-gap: 0px;
     height: 70vh;
     width: 70vw;
+    z-index: 0;
+}
+
+.character-container{
+    z-index: 1;
 }
 
 

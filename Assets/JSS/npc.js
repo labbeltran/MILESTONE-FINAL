@@ -1,5 +1,5 @@
 function newNonPlayableCharacter(x, y) {
-    let element = newImage('assets/red-character/static.gif')
+    let element = newImage('./Assets/img/Gate-Guardianl.jpg')
     element.style.zIndex = 1;
     
     let direction = null;
@@ -25,7 +25,7 @@ function newNonPlayableCharacter(x, y) {
 
     async function walkEast(time) {
         direction = 'east';
-        element.src = './assets/red-character/east.gif';
+        element.src = './Assets/img/Gate-Guardianl.jpg';
             await sleep(time)
             stop()
     }
@@ -33,28 +33,28 @@ function newNonPlayableCharacter(x, y) {
 
     async function walkNorth(time) {
         direction = 'north'
-        element.src = `./assets/red-character/north.gif`
+        element.src = `./Assets/img/Gate-Guardianl.jpg`
             await sleep(time)
             stop()
     }
 
     async function walkWest(time) {
         direction = 'west'
-        element.src = `./assets/red-character/west.gif`
+        element.src = `./Assets/img/Gate-Guardianl.jpg`
             await sleep(time)
             stop()
     }
 
     async function walkSouth(time) {
         direction = 'south'
-        element.src = `./assets/red-character/south.gif`
+        element.src = `./Assets/img/Gate-Guardianl.jpg`
             await sleep(time)
             stop()
     }
 
     function stop() {
         direction = null
-        element.src = `./assets/red-character/static.gif`
+        element.src = `./Assets/img/Gate-Guardianl.jpg`
     }
 
     return {
