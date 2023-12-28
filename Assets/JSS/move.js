@@ -1,9 +1,9 @@
-function move(element) {
-    element.style.position = 'fixed'
+function move(playTank) {
+    playTank.style.position = 'fixed'
 
     function moveToCoordinates(left, bottom) {
-        element.style.left = left + 'px'
-        element.style.bottom = bottom + 'px'
+        playTank.style.left = left + 'px'
+        playTank.style.bottom = bottom + 'px'
     }
 
     function moveWithArrowKeys(left, bottom, callback){
@@ -11,8 +11,8 @@ function move(element) {
         let x = left;
         let y = bottom;
 
-        element.style.left = x + 'px'
-        element.style.bottom = y + 'px'
+        playTank.style.left = x + 'px'
+        playTank.style.bottom = y + 'px'
         
         function moveCharacter(){ 
             if(direction === 'west'){
@@ -27,8 +27,8 @@ function move(element) {
             if(direction === 'south'){
                 y-=1
             }
-            element.style.left = x + 'px'
-            element.style.bottom = y + 'px'
+            playTank.style.left = x + 'px'
+            playTank.style.bottom = y + 'px'
         }
         
         setInterval(moveCharacter, 1)

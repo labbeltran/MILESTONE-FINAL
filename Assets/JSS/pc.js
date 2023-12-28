@@ -1,28 +1,28 @@
 function newPlayableCharacter(x, y) {
-    const element = newImage('./Assets/img/LabyrinthTank 2.jpg')
-    element.style.zIndex = 1;
+    const shinobiRun = newImage('./Assets/img/ninjaIdle')
+    shinobiRun.style.zIndex = 1;
 
     function handleDirectionChange(direction) {
         if (direction === null) {
-            element.src = `./Assets/img/LabyrinthTank 2.jpg`
+            shinobiRun.src = `./Assets/img/ninjaIdle`;
         }
         if (direction === 'west') {
-            element.src = `./Assets/img/LabyrinthTank 2.jpg`
+            shinobiRun.src = `./Assets/img/ninjaWest.png`;
         }
         if (direction === 'north') {
-            element.src = `./Assets/img/LabyrinthTank 2.jpg`
+            shinobiRun.src = `./Assets/img/ninjaNS.png`;
         }
         if (direction === 'east') {
-            element.src = `./Assets/img/LabyrinthTank 2.jpg`
+            shinobiRun.src = `./Assets/img/ninjaEast.png`;
         }
         if (direction === 'south') {
-            element.src = `./Assets/img/LabyrinthTank 2.jpg`
+            shinobiRun.src = `./Assets/img/ninjaNS.png`;
         }
     }
 
-    move(element).withArrowKeys(x, y, handleDirectionChange)
+    move(shinobiRun).withArrowKeys(x, y, handleDirectionChange);
 
     return {
-        element: element
+        shinobiRun: shinobiRun
     }
-}
+};

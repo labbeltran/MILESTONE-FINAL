@@ -1,6 +1,6 @@
 function newNonPlayableCharacter(x, y) {
-    let element = newImage('./Assets/img/Gate-Guardianl.jpg')
-    element.style.zIndex = 2;
+    let mazeGuardian = newImage('./Assets/img/santaIdle.png')
+    mazeGuardian.style.zIndex = 2;
     
     let direction = null;
 
@@ -17,8 +17,8 @@ function newNonPlayableCharacter(x, y) {
         if (direction === 'south') {
             y -= 1
         }
-        element.style.left = x + 'px'
-        element.style.bottom = y + 'px'
+        mazeGuardian.style.left = x + 'px'
+        mazeGuardian.style.bottom = y + 'px'
     }
     console.log(newNonPlayableCharacter() )
 
@@ -26,7 +26,7 @@ function newNonPlayableCharacter(x, y) {
 
     async function walkEast(time) {
         direction = 'east';
-        element.src = './Assets/img/Gate-Guardianl.jpg';
+        mazeGuardian.src = './Assets/img/santaEast.png';
             await sleep(time)
             stop()
     }
@@ -34,32 +34,32 @@ function newNonPlayableCharacter(x, y) {
 
     async function walkNorth(time) {
         direction = 'north'
-        element.src = `./Assets/img/Gate-Guardianl.jpg`
+        mazeGuardian.src = `./Assets/img/santaNS.png`
             await sleep(time)
             stop()
     }
 
     async function walkWest(time) {
         direction = 'west'
-        element.src = `./Assets/img/Gate-Guardianl.jpg`
+        mazeGuardian.src = `./Assets/img/santaWest.png`
             await sleep(time)
             stop()
     }
 
     async function walkSouth(time) {
         direction = 'south'
-        element.src = `./Assets/img/Gate-Guardianl.jpg`
+        mazeGuardian.src = `./Assets/img/santaNS.png`
             await sleep(time)
             stop()
     }
 
     function stop() {
         direction = null
-        element.src = `./Assets/img/Gate-Guardianl.jpg`
+        element.src = `./Assets/img/santaIdle.png`
     }
 
     return {
-        element: element,
+        mazeGuardian: mazeGuardian,
         walkWest: walkWest,
         walkNorth: walkNorth,
         walkEast: walkEast,

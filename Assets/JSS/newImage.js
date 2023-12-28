@@ -6,24 +6,24 @@
 //     return image
 // }
 
-function createTank(){
-    let tank = document.createElement('img')
-    tank.src = './Assets/img/LabyrinthTank 2.jpg'
-    tank.position = 'fixed'
-    tank.left = '500px'
-    tank.bottom= '400px'
-    document.body.append(tank)
-    return tank
+function createNinja(){
+    let ninja = document.createElement('img');
+    ninja.src = './Assets/img/ninjaIdle.png';
+    ninja.style.position = 'fixed';
+    ninja.style.left = '200px';
+    ninja.style.bottom= '200px';
+    document.body.append(ninja);
+    return ninja;
 }
 
-function createExit{
-    let exit = document.createElement ('img')
-    exit.src = './Assets/img/pearly-gates.jpg'
-    exit.position = 'fixed'
-    exit.left = '700px'
-    exit.bottom = '200px'
-    document.body.append (exit)
-    return exit
+function createExit(){
+    let exit = document.createElement ('img');
+    exit.src = './Assets/img/pearly-gates.jpg';
+    exit.style.position = 'fixed';
+    exit.style.left = '100px';
+    exit.style.bottom = '100px';
+    document.body.append (exit);
+    return exit;
 }
 
     // tank.addEventListener('click' )
