@@ -57,16 +57,19 @@ let levelThree =[
 
 let main = document.getElementById('main');
 let maze = document.getElementById('maze-container');
-let tank = document.getElementById('labyrinth-tank');
+let ninja = document.getElementById('');
 let exit = document.getElementById('pearly-gates');
   
 
 const mazeArray = level1;
+
 const mazeContainer = document.getElementById('maze-container')
+
   // ----Create maze------
+
   function createMaze(){
 
-    // mazeContainer.innerHTML = '';
+  mazeContainer.innerHTML='';
 
     for(let i = 0; i< mazeArray.length; i++){
          for(let j = 0; j< mazeArray[i].length; j++){
@@ -81,18 +84,29 @@ const mazeContainer = document.getElementById('maze-container')
     }
   }
 
-// //     ----Function to create maze on button click----
-//     // async function(){
-//     //   await 
-//     // }
-    
-//   // ----Function that lets player move through maze
-//   function move(){}
-  
-//   // ------Function that checks if player entered exit cell___
-//   function checkExit(){}
-  
-//   // ----Function that generates timer-------
+  // -----switch level of difficulty-------
+
+  function switchLevel(level){
+    let mazeArray;
+    switch(level){
+        case 1:
+          mazeArray =1;
+          break;
+
+        case 2: mazeArray = level2;
+        break;
+
+        case 3:
+          mazeArray=level3;
+          break;
+        
+        default: 
+        mazeArray= level1;
+        break;
+    }
+  }
+
+
 
 // Set the initial time in seconds
 // async function startTimer

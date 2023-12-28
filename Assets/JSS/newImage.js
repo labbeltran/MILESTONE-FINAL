@@ -12,7 +12,7 @@ function createNinja(){
     ninja.style.position = 'fixed';
     ninja.style.left = '200px';
     ninja.style.bottom= '200px';
-    document.body.append(ninja);
+    document.getElementById('character-container').append(ninja);
     return ninja;
 }
 
@@ -22,7 +22,7 @@ function createExit(){
     exit.style.position = 'fixed';
     exit.style.left = '100px';
     exit.style.bottom = '100px';
-    document.body.append (exit);
+    document.getElementById('character-container').append(exit);
     return exit;
 }
 
