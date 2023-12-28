@@ -1,6 +1,6 @@
 function newNonPlayableCharacter(x, y) {
     let element = newImage('./Assets/img/Gate-Guardianl.jpg')
-    element.style.zIndex = 1;
+    element.style.zIndex = 2;
     
     let direction = null;
 
@@ -20,6 +20,7 @@ function newNonPlayableCharacter(x, y) {
         element.style.left = x + 'px'
         element.style.bottom = y + 'px'
     }
+    console.log(newNonPlayableCharacter() )
 
     setInterval(moveCharacter, 1)
 
