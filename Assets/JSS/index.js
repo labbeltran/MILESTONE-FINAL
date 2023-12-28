@@ -82,6 +82,8 @@ const mazeContainer = document.getElementById('maze-container')
         mazeContainer.appendChild(cell);
       }
     }
+    createNinja();
+    createExit();
   }
 
   // -----switch level of difficulty-------

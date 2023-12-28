@@ -52,11 +52,12 @@ main{
     grid-gap: 0px;
     height: 90vh;
     width: 90vw;
-    z-index: -1;
+    z-index: 0;
 }
 
 .character-container{
-    z-index: 1;
+    z-index: 0;
+    
 }
 
 

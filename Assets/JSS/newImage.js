@@ -12,6 +12,8 @@ function createNinja(){
     ninja.style.position = 'fixed';
     ninja.style.left = '200px';
     ninja.style.bottom= '200px';
+    ninja.style.width = '80px';
+    ninja.style.height = '80px';
     document.getElementById('character-container').append(ninja);
     return ninja;
 }
@@ -22,6 +24,8 @@ function createExit(){
     exit.style.position = 'fixed';
     exit.style.left = '100px';
     exit.style.bottom = '100px';
+    exit.style.width = '80px';
+    exit.style.height = '80px';
     document.getElementById('character-container').append(exit);
     return exit;
 }
