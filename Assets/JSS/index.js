@@ -120,4 +120,28 @@ function makeMove() {
     document.getElementById('move-counter').innerText = `Moves: ${moves}`;
 }
 //   // -----Function that spins maze on lv2 and lv3--------
+
 //   function spinMaze(){}
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Get the element you want to rotate
+//   const rotateMaze = document.getElementById("game-container");
+
+//   // Function to rotate the element
+//   function rotate() {
+//       // Increment the rotation angle (in degrees)
+//       let currentRotation = 0;
+
+//       function rotateStep() {
+//           currentRotation += 1;
+//           rotateElement.style.transform = `rotate(${currentRotation}deg)`;
+//           requestAnimationFrame(rotateStep);
+//       }
+
+//       rotateStep();
+//   }
+
+//   // Call the rotate function
+//   rotate();
+// });

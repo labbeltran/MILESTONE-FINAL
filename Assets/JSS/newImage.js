@@ -26,4 +26,4 @@ function createExit(){
     return exit;
 }
 
-    // tank.addEventListener('click' )
+    // ninja.addEventListener('click' )
