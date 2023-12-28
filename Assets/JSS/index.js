@@ -91,6 +91,7 @@ const mazeContainer = document.getElementById('maze-container')
     switch(level){
         case 1:
           mazeArray =1;
+
           break;
 
         case 2: mazeArray = level2;
@@ -107,6 +108,16 @@ const mazeContainer = document.getElementById('maze-container')
   }
 
 
+// const mazeContainer = document.getElementById('maze-container');
+
+// // Function to change grid template values
+// function changeGridTemplate(rows, columns) {
+//     mazeContainer.style.gridTemplateColumns = `repeat(${columns}, 80px)`;
+//     mazeContainer.style.gridTemplateRows = `repeat(${rows}, 80px)`;
+// }
+
+
+// changeGridTemplate(, );
 
 // Set the initial time in seconds
 // async function startTimer
