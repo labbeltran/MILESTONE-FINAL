@@ -1,20 +1,19 @@
-function move(shinobiMove) {
-    shinobiMove.style.position = 'fixed'
+function move(playTank) {
 
     function moveToCoordinates(left, bottom) {
-        shinobiMove.style.left = left + 'px'
-        shinobiMove.style.bottom = bottom + 'px'
+        playTank.style.left = left + 'px'
+        playTank.style.bottom = bottom + 'px'
     }
 
     function moveWithArrowKeys(left, bottom, callback){
         let direction = null;
-        let x = left;
-        let y = bottom;
+        let x = 80;
+        let y = 80;
 
-        shinobiMove.style.left = x + 'px'
-        shinobiMove.style.bottom = y + 'px'
-        
-        function moveCharacter(){ 
+        playTank.style.left = x + 'px'
+        playTank.style.bottom = y + 'px'
+
+        function moveCharacter(){
             if(direction === 'west'){
                 x-=1
             }
@@ -27,15 +26,15 @@ function move(shinobiMove) {
             if(direction === 'south'){
                 y-=1
             }
-            shinobiMove.style.left = x + 'px'
-            shinobiMove.style.bottom = y + 'px'
+            playTank.style.left = x + 'px'
+            playTank.style.bottom = y + 'px'
         }
-        
+
         setInterval(moveCharacter, 1)
-        
+
         document.addEventListener('keydown', function(e){
             if(e.repeat) return;
-        
+
             if(e.key === 'A'){
                 direction = 'west'
             }
@@ -50,7 +49,7 @@ function move(shinobiMove) {
             }
             callback(direction)
         })
-        
+
         document.addEventListener('keyup', function(e){
             direction = null
             callback(direction)
