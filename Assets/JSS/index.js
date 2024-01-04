@@ -1,57 +1,60 @@
-let level1 =[
-  [1, 0, 1, 0, 1, 1],
-  [1, 0, 1, 1, 1, 0],
-  [1, 1, 0, 1, 0, 1],
-  [0, 1, 1, 0, 1, 0],
-  [1, 0, 1, 1, 1, 1],
-  [1, 0, 1, 0, 0, 1],
-  [1, 1, 1, 1, 0, 1],
+let levelOneStart = [160,200 ]
+let levelOneExit = [6,6];
+
+let levelOne = [
+    [1, 0, 1, 0, 1, 1],
+    [1, 0, 1, 1, 1, 0],
+    [1, 1, 0, 1, 0, 1],
+    [0, 1, 1, 0, 1, 0],
+    [1, 0, 1, 1, 1, 1],
+    [1, 0, 1, 0, 0, 1],
+    [1, 1, 1, 1, 0, 1],
 ];
 
-let levelTwo =[
-  [1,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0],
-  [1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0],
-  [1,0,0,1,1,1,0,0,0,1,0,0,1,1,1,1,1],
-  [1,1,0,1,0,1,1,1,1,1,0,0,0,0,0,0,1],
-  [0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1],
-  [0,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1,0],
-  [0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0],
-  [0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0],
-  [0,1,0,1,0,0,0,1,0,1,1,1,1,1,1,0,0],
-  [0,1,0,1,0,0,0,1,0,1,0,0,0,0,1,0,0],
-  [0,1,0,1,0,0,0,1,0,1,0,1,1,1,1,0,0],
-  [0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0],
-  [0,1,0,1,0,1,1,1,0,1,0,1,1,0,0,0,0],
-  [0,1,0,1,0,1,0,0,0,1,0,0,1,0,0,0,0],
-  [0,1,1,1,0,1,1,1,1,1,0,0,1,1,1,1,1],
+let levelTwo = [
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+    [1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1],
+    [1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1],
+    [0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+    [0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+    [0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0],
+    [0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+    [0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1],
 ];
 
-let levelThree =[
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+let levelThree = [
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
 // Global Variables----------
 
@@ -59,82 +62,87 @@ let main = document.getElementById('main');
 let maze = document.getElementById('maze-container');
 let ninja = document.getElementById('');
 let exit = document.getElementById('pearly-gates');
-  
 
-const mazeArray = level1;
+
+let mazeArray = levelOne;
 
 const mazeContainer = document.getElementById('maze-container')
 
-  // ----Create maze------
+// ----Create maze------
 
-  function createMaze(){
+function createMaze() {
 
-  mazeContainer.innerHTML='';
+    switchLevel(document.getElementById("levelselect").value);
+    setRowAndColumn(mazeArray.length,mazeArray[0].length);
 
-    for(let i = 0; i< mazeArray.length; i++){
-         for(let j = 0; j< mazeArray[i].length; j++){
-            const cell= document.createElement('div');
+    for (let i = 0; i < mazeArray.length; i++) {
+        for (let j = 0; j < mazeArray[i].length; j++) {
+            const cell = document.createElement('div');
             cell.classList.add('cell');
-      
-            if(mazeArray[i][j] === 0){
-            cell.classList.add('wall');
+
+            if (mazeArray[i][j] === 0) {
+                cell.classList.add('wall');
+            }
+
+            mazeContainer.appendChild(cell);
         }
-        mazeContainer.appendChild(cell);
-      }
     }
-    createNinja();
-    createExit();
-  }
 
-  // -----switch level of difficulty-------
 
-  function switchLevel(level){
-    let mazeArray;
-    switch(level){
-        case 1:
-          mazeArray =1;
+    createNinja((levelOneStart[0]),(levelOneStart[1]));
 
-          break;
+    makeMove()
+    //createExit(i*80,j*80);
+}
 
-        case 2: mazeArray = level2;
-        break;
+function setRowAndColumn(row, col){
+    let mazeContainer = document.getElementById("maze-container");
+    mazeContainer.style.gridTemplateRows = `repeat(${row}, 80px)`;
+    mazeContainer.style.gridTemplateColumns = `repeat(${col}, 80px)`;
+}
 
-        case 3:
-          mazeArray=level3;
-          break;
-        
-        default: 
-        mazeArray= level1;
-        break;
+
+// -----switch level of difficulty-------
+
+function switchLevel(level) {
+    console.log(level)
+    switch (level) {
+        case "1":
+            mazeArray = levelOne;
+            console.log("Level 1 selected")
+            break;
+
+        case "2":
+            mazeArray = levelTwo;
+            console.log("Level 2 selected")
+            break;
+
+        case "3":
+            mazeArray = levelThree;
+            console.log("Level 3 selected")
+            break;
+
+        default:
+            mazeArray = levelOne;
+            break;
     }
-  }
+}
 
-
-// const mazeContainer = document.getElementById('maze-container');
-
-// // Function to change grid template values
-// function changeGridTemplate(rows, columns) {
-//     mazeContainer.style.gridTemplateColumns = `repeat(${columns}, 80px)`;
-//     mazeContainer.style.gridTemplateRows = `repeat(${rows}, 80px)`;
-// }
-
-
-// changeGridTemplate(, );
 
 // Set the initial time in seconds
 // async function startTimer
-    let timeInSeconds = 20;
-    document.getElementById('timer').innerText = `Timer: ${timeInSeconds} seconds`;
-    const timerInterval = setInterval(function() {
-    timeInSeconds--;
-    document.getElementById('timer').innerText = `Timer: ${timeInSeconds} seconds`;
-
-    // Check if the timer has reached 0
-    if (timeInSeconds === 0) {
-        clearInterval(timerInterval); // Stop the timer when it reaches 0
-        alert("Times; up! You Lose!");
-    }
-}, 1000); 
+let timeInSeconds = 20;
+// document.getElementById('timer').innerText = `Timer: ${timeInSeconds} seconds`;
+// const timerInterval = setInterval(function () {
+//     timeInSeconds--;
+//     document.getElementById('timer').innerText = `Timer: ${timeInSeconds} seconds`;
+//
+//     // Check if the timer has reached 0
+//     if (timeInSeconds === 0) {
+//         clearInterval(timerInterval); // Stop the timer when it reaches 0
+//         alert("Times; up! You Lose!");
+//     }
+// }, 1000);
 
 //   // ----Function that compares time and returns score based on time left----------
 
@@ -145,7 +153,10 @@ let moves = 0;
 function makeMove() {
     moves++;
     document.getElementById('move-counter').innerText = `Moves: ${moves}`;
+
+    move(document.getElementById("ninja"))
 }
+
 //   // -----Function that spins maze on lv2 and lv3--------
 
 //   function spinMaze(){}

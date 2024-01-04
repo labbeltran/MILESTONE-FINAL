@@ -1,9 +1,9 @@
-function move(playTank) {
-    playTank.style.position = 'fixed'
+function move(shinobiMove) {
+    shinobiMove.style.position = 'fixed'
 
     function moveToCoordinates(left, bottom) {
-        playTank.style.left = left + 'px'
-        playTank.style.bottom = bottom + 'px'
+        shinobiMove.style.left = left + 'px'
+        shinobiMove.style.bottom = bottom + 'px'
     }
 
     function moveWithArrowKeys(left, bottom, callback){
@@ -11,8 +11,8 @@ function move(playTank) {
         let x = left;
         let y = bottom;
 
-        playTank.style.left = x + 'px'
-        playTank.style.bottom = y + 'px'
+        shinobiMove.style.left = x + 'px'
+        shinobiMove.style.bottom = y + 'px'
         
         function moveCharacter(){ 
             if(direction === 'west'){
@@ -27,8 +27,8 @@ function move(playTank) {
             if(direction === 'south'){
                 y-=1
             }
-            playTank.style.left = x + 'px'
-            playTank.style.bottom = y + 'px'
+            shinobiMove.style.left = x + 'px'
+            shinobiMove.style.bottom = y + 'px'
         }
         
         setInterval(moveCharacter, 1)

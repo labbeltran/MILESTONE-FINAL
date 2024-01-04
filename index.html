@@ -12,11 +12,10 @@
     <script src="./Assets/JSS/npc.js"></script>
     <script src="./Assets/JSS/pc.js"></script>
 </head>
-<body onload="makeMove()">
+<body>
     <header>
         <h1>Labyrinth Wall</h1>
     </header>
-
     <main>
         <div class="button-container">
             <select title="levels" id="levelselect">
@@ -24,29 +23,23 @@
                 <option value="2">Level 2</option>
                 <option value="3">Level 3</option>
             </select>
-            <button onclick="createMaze()">Begin! </button>
+            <button onclick="createMaze()"> Begin! </button>
         </div>
-          
-        
-        <div id= "timer"><p>Timer: </p></div>
-        <div id="move-counter">Moves</div>
-        <div idd=" game-board" class=" game-board">
+        <div>
+            <div><p id="timer">Timer:</p></div>
+            <div id="move-counter">Moves</div>
+        </div>
+    
+        <div id="game-board" class="game-board">
             <div id="maze-container" class="maze">
             </div>
-            <div id="character-container" class="character-container" >
-               
+            <div id="character-container" class="character-container" onload="createNinja(); createExit();">
             </div>
-        </div>-+
+        </div>
     </main>
 
     <footer>
         <!-- Add any footer content if needed -->
     </footer>
-
-    <script src="./Assets/JSS/index.js"></script>
-    <script src="./Assets/JSS/move.js"></script>
-    <script src="./Assets/JSS/newImage.js"></script>
-    <script src="./Assets/JSS/npc.js"></script>
-    <script src="./Assets/JSS/pc.js"></script>
 </body>
 </html>
