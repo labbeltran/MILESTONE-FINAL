@@ -6,14 +6,17 @@
 //     return image
 // }
 
-function createNinja(){
+function createNinja(x, y){
+    console.log(`Create Ninja x:${x} : y:${y}`)
     let ninja = document.createElement('img');
-    ninja.src = './Assets/img/ninjaIdle.png';
-    ninja.style.position = 'fixed';
-    ninja.style.left = '200px';
-    ninja.style.bottom= '200px';
-    ninja.style.width = '80px';
-    ninja.style.height = '80px';
+    ninja.id = "ninja"
+    ninja.src = '../Assets/img/ninjaIdle.png';
+    ninja.style.width = "80px"
+    ninja.style.height = "80px"
+    ninja.style.position="relative"
+    ninja.style.top=`${x}px`
+    ninja.style.left=`${y}px`
+
     document.getElementById('character-container').append(ninja);
     return ninja;
 }
@@ -21,11 +24,8 @@ function createNinja(){
 function createExit(){
     let exit = document.createElement ('img');
     exit.src = './Assets/img/pearly-gates.jpg';
-    exit.style.position = 'fixed';
-    exit.style.left = '100px';
-    exit.style.bottom = '100px';
-    exit.style.width = '80px';
-    exit.style.height = '80px';
+    exit.style.width = "80px"
+    exit.style.height = "80px"
     document.getElementById('character-container').append(exit);
     return exit;
 }
