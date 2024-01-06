@@ -6,11 +6,11 @@
     <title>Labyrinth Wall Milestone</title>
     <link rel="stylesheet" href="./Assets/CSS/style.css">
     <link href="https://fonts.cdnfonts.com/css/horror-type" rel="stylesheet">
-    <script src="./Assets/JSS/index.js"></script>
-    <script src="./Assets/JSS/move.js"></script>
-    <script src="./Assets/JSS/newImage.js"></script>
-    <script src="./Assets/JSS/npc.js"></script>
-    <script src="./Assets/JSS/pc.js"></script>
+    <script src="./Assets/JSS/index.js" defer></script>
+    <script src="./Assets/JSS/move.js" defer ></script>
+    <script src="./Assets/JSS/newImage.js" defer></script>
+    <script src="./Assets/JSS/npc.js" defer></script>
+    <script src="./Assets/JSS/pc.js" defer></script>
 </head>
 <body>
     <header>
@@ -30,11 +30,9 @@
             <div id="move-counter">Moves</div>
         </div>
     
-        <div id="game-board" class="game-board">
-            <div id="maze-container" class="maze">
-            </div>
-            <div id="character-container" class="character-container" onload="createNinja(); createExit();">
-            </div>
+        <canvas id="game-board" class="game-board">
+            
+        </canvas>
         </div>
     </main>
 

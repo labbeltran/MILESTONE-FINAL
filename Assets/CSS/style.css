@@ -1,4 +1,4 @@
-#labyrinth-tank {
+/* #labyrinth-tank {
     width: 5px;
     height: 5px;
     z-index: 1;
@@ -10,11 +10,11 @@
     height: 5px;
     z-index: 1;
     
-}
+} */
 
  body {
 
-    background-color: dodgerblue; 
+    background-color: black; 
 }
 
 h1 {
@@ -46,7 +46,7 @@ main{
     
 
 
-#maze-container{
+/* #maze-container{
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(6, 80px);
@@ -70,4 +70,4 @@ main{
 
 .wall {
     background-color: #000;
-}
+} */

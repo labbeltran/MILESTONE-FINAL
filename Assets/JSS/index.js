@@ -1,4 +1,4 @@
-let levelOneStart = [160,200 ]
+let levelOneStart = [-220,-200 ]
 let levelOneExit = [6,6];
 
 let levelOne = [
@@ -58,75 +58,159 @@ let levelThree = [
 ];
 // Global Variables----------
 
-let main = document.getElementById('main');
-let maze = document.getElementById('maze-container');
-let ninja = document.getElementById('');
-let exit = document.getElementById('pearly-gates');
+const canvas = document.querySelector('canvas')
+const c = canvas.getContext('2d')
 
+canvas.width = innerWidth //css element
+canvas.height = innerHeight //css element
+class Boundary {
+    static width = 60;
+    static height = 60;
 
-let mazeArray = levelOne;
+    constructor({ position, image}) {
+        this.position = position;
+        this.width = 60;
+        this.height = 60;
+        this.image = image;
+        this.image = new Image();
+        this.image.src = this.image;
+    }
 
-const mazeContainer = document.getElementById('maze-container')
-
-// ----Create maze------
-
-function createMaze() {
-
-    switchLevel(document.getElementById("levelselect").value);
-    setRowAndColumn(mazeArray.length,mazeArray[0].length);
-
-    for (let i = 0; i < mazeArray.length; i++) {
-        for (let j = 0; j < mazeArray[i].length; j++) {
-            const cell = document.createElement('div');
-            cell.classList.add('cell');
-
-            if (mazeArray[i][j] === 0) {
-                cell.classList.add('wall');
-            }
-
-            mazeContainer.appendChild(cell);
+    draw() {
+       
+        if (this.image.complete) {
+            c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+        } else {
+            c.fillStyle = 'Purple';
+            c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
     }
-
-
-    createNinja((levelOneStart[0]),(levelOneStart[1]));
-
-    makeMove()
-    //createExit(i*80,j*80);
 }
 
-function setRowAndColumn(row, col){
-    let mazeContainer = document.getElementById("maze-container");
-    mazeContainer.style.gridTemplateRows = `repeat(${row}, 80px)`;
-    mazeContainer.style.gridTemplateColumns = `repeat(${col}, 80px)`;
-}
-
-
-// -----switch level of difficulty-------
-
-function switchLevel(level) {
-    console.log(level)
-    switch (level) {
-        case "1":
-            mazeArray = levelOne;
-            console.log("Level 1 selected")
-            break;
-
-        case "2":
-            mazeArray = levelTwo;
-            console.log("Level 2 selected")
-            break;
-
-        case "3":
-            mazeArray = levelThree;
-            console.log("Level 3 selected")
-            break;
-
-        default:
-            mazeArray = levelOne;
-            break;
+function createImage(src){
+    const image =new Image();
+    image.src= src;
+    return image;
     }
-}
+
+const maze = [
+    ['0','0','0','0','0','0','0','0','0'],
+    ['0','1','0','1','1','1','1','1','0'],
+    ['0','1','1','0','1','0','0','1','0'],
+    ['0','1','0','1','1','0','1','1','0'],
+    ['0','1','0','1','1','0','1','0','0'],
+    ['0','1','1','0','1','0','1','1','0'],
+    ['0','0','1','0','1','0','0','1','0'],
+    ['0','1','1','1','1','1','0','1','0'],
+    ['0','0','0','0','0','0','0','0','0'],
+];
+
+
+const boundaries = [];
+
+maze.forEach((row, i) => {
+    row.forEach((symbol, j) => {
+        switch(symbol) {
+            case '0':
+                boundaries.push(
+                    new Boundary({
+                        position: {
+                            x: 60* j, 
+                            y: 60*i
+                        },
+                        image: createImage('Assets/img/sakuraTree.png')
+                    }),
+                    
+                );
+                break;
+                }
+                
+        });
+    });
+
+
+// Drawing the boundaries
+boundaries.forEach(boundary => {
+    boundary.draw();
+})
+
+
+
+
+
+// let main = document.getElementById('main');
+// let maze = document.getElementById('maze-container');
+// let ninja = document.getElementById('');
+// let exit = document.getElementById('pearly-gates');
+
+
+// let mazeArray = levelOne;
+
+// const mazeContainer = document.getElementById('maze-container')
+
+// // ----Create maze------
+
+// function createMaze() {
+
+//     switchLevel(document.getElementById("levelselect").value);
+//     setRowAndColumn(mazeArray.length,mazeArray[0].length);
+
+//     for (let i = 0; i < mazeArray.length; i++) {
+//         for (let j = 0; j < mazeArray[i].length; j++) {
+//             const cell = document.createElement('div');
+//             cell.classList.add('cell');
+
+//             if (mazeArray[i][j] === 0) {
+//                 cell.classList.add('wall');
+//             }
+
+//             mazeContainer.appendChild(cell);
+//         }
+//     }
+
+
+//     createNinja((levelOneStart[0]),(levelOneStart[1]));
+
+//     makeMove()
+//     //createExit(i*80,j*80);
+// }
+
+// function setRowAndColumn(row, col){
+//     let mazeContainer = document.getElementById("maze-container");
+//     mazeContainer.style.gridTemplateRows = `repeat(${row}, 80px)`;
+//     mazeContainer.style.gridTemplateColumns = `repeat(${col}, 80px)`;
+// }
+
+
+// // -----switch level of difficulty-------
+
+// function switchLevel(level) {
+//     console.log(level)
+//     switch (level) {
+//         case "1":
+//             mazeArray = levelOne;
+//             console.log("Level 1 selected")
+//             break;
+
+//         case "2":
+//             mazeArray = levelTwo;
+//             console.log("Level 2 selected")
+//             break;
+
+//         case "3":
+//             mazeArray = levelThree;
+//             let mazeContainer = document.getElementById("maze-container");
+//             mazeContainer.style.gridTemplateRows = (24, '50px');
+//             mazeContainer.style.gridTemplateColumns = (27, '50px');
+//             console.log("Level 3 selected")
+//             break;
+
+//         default:
+//             mazeArray = levelOne;
+//             break;
+//     }
+//     maze.innerHTML = '';
+// }
 
 
 // Set the initial time in seconds
@@ -183,3 +267,16 @@ function makeMove() {
 //   // Call the rotate function
 //   rotate();
 // });
+
+
+
+// -----------------------------------------------------------------------------
+
+
+// 2d Collision Detection
+
+// -need to create a variable for the player the player position   
+
+// -need a function to check the mazeArray variable and chekc if they can move to it. Player position then needs to be updated. 
+
+// -each time the player moves check if they have reached the exit. 
