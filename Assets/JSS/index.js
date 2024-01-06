@@ -58,29 +58,25 @@ let levelThree = [
 ];
 // Global Variables----------
 
-const canvas = document.querySelector('canvas')
-const c = canvas.getContext('2d')
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
 
-canvas.width = innerWidth //css element
-canvas.height = innerHeight //css element
-
-// Drawing the boundaries
+canvas.width = innerWidth; // CSS element
+canvas.height = innerHeight; // CSS element
 
 class Boundary {
     static width = 60;
     static height = 60;
 
-    constructor({ position, image}) {
+    constructor({ position, image }) {
         this.position = position;
         this.width = 60;
         this.height = 60;
         this.image = image;
-        this.image = new Image();
-        this.image.src = this.image;
+        this.image = createImage(this.image);
     }
 
     draw() {
-       
         if (this.image.complete) {
             c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
         } else {
@@ -90,64 +86,64 @@ class Boundary {
     }
 }
 
-function createImage(src){
-    const image =new Image();
-    image.src= src;
+function createImage(src) {
+    const image = new Image();
+    image.src = src;
     return image;
-    }
+}
+
+const keys = {
+    w: { pressed: false },
+    a: { pressed: false },
+    s: { pressed: false },
+    d: { pressed: false },
+};
+
+let lastKey = '';
 
 const maze = [
-    ['0','0','0','0','0','0','0','0','0'],
-    ['0','1','0','1','1','1','1','1','0'],
-    ['0','1','1','0','1','0','0','1','0'],
-    ['0','1','0','1','1','0','1','1','0'],
-    ['0','1','0','1','1','0','1','0','0'],
-    ['0','1','1','0','1','0','1','1','0'],
-    ['0','0','1','0','1','0','0','1','0'],
-    ['0','1','1','1','1','1','0','1','0'],
-    ['0','0','0','0','0','0','0','0','0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '1', '0', '1', '1', '1', '1', '1', '0'],
+    ['0', '1', '1', '0', '1', '0', '0', '1', '0'],
+    ['0', '1', '0', '1', '1', '0', '1', '1', '0'],
+    ['0', '1', '0', '1', '1', '0', '1', '0', '0'],
+    ['0', '1', '1', '0', '1', '0', '1', '1', '0'],
+    ['0', '0', '1', '0', '1', '0', '0', '1', '0'],
+    ['0', '1', '1', '1', '1', '1', '0', '1', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0'],
 ];
-
 
 const boundaries = [];
 
 maze.forEach((row, i) => {
     row.forEach((symbol, j) => {
-        switch(symbol) {
+        switch (symbol) {
             case '0':
                 boundaries.push(
                     new Boundary({
                         position: {
-                            x: 60* j, 
-                            y: 60*i
+                            x: 60 * j,
+                            y: 60 * i,
                         },
-                        image: createImage('Assets/img/sakuraTree.png')
-                    }),
-                    
+                        image: 'Assets/img/sakuraTree.png',
+                    })
                 );
                 break;
-                }
-                
-        });
+        }
     });
+});
 
-
-
-boundaries.forEach(boundary => {
-    boundary.draw();
-})
-
-class Player{
-    constructor(){
-        this.position = this.position
-        this.velocity = this.velocity
-        this.image = image;
-        this.image = new Image();
-        this.image.src = this.image; 
+// Player Class
+class Player {
+    constructor() {
+        this.position = { x: canvas.width / 2, y: canvas.height / 2 };
+        this.velocity = { x: 0, y: 0 };
+        this.width = 60;
+        this.height = 60;
+        this.image = createImage('Assets/img/player.png');
     }
 
     draw() {
-       
         if (this.image.complete) {
             c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
         } else {
@@ -155,36 +151,78 @@ class Player{
             c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
     }
-}
 
-class NPC {
-    constructor (){
-        this.position = this.position
-        this.velocity = this.velocity
-        this.image = image;
-        this.image = new Image();
-        this.image.src = this.image;
+    update() {
+        this.draw();
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
     }
 }
 
-window.addEventListener('keydown', ({key}) =>{
+const player = new Player(); // Initialize the player
+
+function animate() {
+    requestAnimationFrame(animate);
+    c.clearRect(0, 0, canvas.width, canvas.height);
+
+    boundaries.forEach((boundary) => {
+        boundary.draw();
+    });
+
+    player.update();
+    player.velocity.x = 0;
+    player.velocity.y = 0;
+
+    if (keys.w.pressed && lastKey === 'w') {
+        player.velocity.y = -5;
+    } else if (keys.a.pressed && lastKey === 'a') {
+        player.velocity.x = -5;
+    } else if (keys.s.pressed && lastKey === 's') {
+        player.velocity.y = 5;
+    } else if (keys.d.pressed && lastKey === 'd') {
+        player.velocity.x = 5;
+    }
+}
+
+window.addEventListener('keydown', ({ key }) => {
     switch (key) {
         case 'w':
-            player.velocity.y= -5
-            break
-            case 'a':
-            player.velocity.x= -5
-            break
-            case 's':
-            player.velocity.y= 5
-            break
-            case 'd':
-            player.velocity.x= 5
-            break
+            keys.w.pressed = true;
+            lastKey = 'w';
+            break;
+        case 'a':
+            keys.a.pressed = true;
+            lastKey = 'a';
+            break;
+        case 's':
+            keys.s.pressed = true;
+            lastKey = 's';
+            break;
+        case 'd':
+            keys.d.pressed = true;
+            lastKey = 'd';
+            break;
     }
+});
 
-})
+window.addEventListener('keyup', ({ key }) => {
+    switch (key) {
+        case 'w':
+            keys.w.pressed = false;
+            break;
+        case 'a':
+            keys.a.pressed = false;
+            break;
+        case 's':
+            keys.s.pressed = false;
+            break;
+        case 'd':
+            keys.d.pressed = false;
+            break;
+    }
+});
 
+animate(); // Start the animation loop
 
 // let main = document.getElementById('main');
 // let maze = document.getElementById('maze-container');
