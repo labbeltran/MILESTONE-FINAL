@@ -107,13 +107,13 @@ let lastKey = '';
 
 const maze = [
     ['0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '1', '0', '1', '1', '1', '1', '1', '0'],
+    ['0', '2', '0', '1', '1', '1', '1', '1', '0'],
     ['0', '1', '1', '0', '1', '0', '0', '1', '0'],
     ['0', '1', '0', '1', '1', '0', '1', '1', '0'],
     ['0', '1', '0', '1', '1', '0', '1', '0', '0'],
     ['0', '1', '1', '0', '1', '0', '1', '1', '0'],
     ['0', '0', '1', '0', '1', '0', '0', '1', '0'],
-    ['0', '1', '1', '1', '1', '1', '0', '1', '0'],
+    ['0', '1', '1', '1', '1', '1', '0', '3', '0'],
     ['0', '0', '0', '0', '0', '0', '0', '0', '0'],
 ];
 
@@ -141,9 +141,36 @@ maze.forEach((row, i) => {
     });
 });
 
+function findStartPoint(maze){
+    for( let i=0, i, maze.length; i++){
+        for (let j= 0; j < maze[i].length; j++){
+            if (maze[i][j] === '2'){
+                return {row: i, column: j};
+            }
+        }
+    }
+    return null;
+}
+
+function findEndPoint(maze){
+    for( let i=0, i, maze.length; i++){
+        for (let j= 0; j < maze[i].length; j++){
+            if (maze[i][j] === '3'){
+                return {row: i, column: j};
+            }
+        }
+    }
+    return null;
+}
+ 
+const startPoint = findStartPoint(maze);
+const endPoint = findEndPoint(maze);
+
+
+
 // Player Class
 class Player {
-    constructor() {
+    constructor(maze) {
         this.position = { x: canvas.width / 2, y: canvas.height / 2 };
         this.velocity = { x: 0, y: 0 };
         this.width = 60;
@@ -167,8 +194,9 @@ class Player {
         this.position.y += this.velocity.y;
     }
 }
+// write calculate start position function here
 
-const player = new Player(); // Initialize the player
+const player = new Player(maze); // Initialize the player
 
 function animate() {
     requestAnimationFrame(animate);
