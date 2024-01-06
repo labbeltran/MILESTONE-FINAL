@@ -1,19 +1,20 @@
-let levelOneStart = [-220,-200 ]
-let levelOneExit = [6,6];
+// ----------Maze Arrays with solution path------------------------------
 
 let levelOne = [
-    [1, 0, 1, 0, 1, 1],
-    [1, 0, 1, 1, 1, 0],
-    [1, 1, 0, 1, 0, 1],
-    [0, 1, 1, 0, 1, 0],
-    [1, 0, 1, 1, 1, 1],
-    [1, 0, 1, 0, 0, 1],
-    [1, 1, 1, 1, 0, 1],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '2', '0', '1', '1', '1', '1', '1', '0'],
+    ['0', '1', '1', '0', '1', '0', '0', '1', '0'],
+    ['0', '1', '0', '1', '1', '0', '1', '1', '0'],
+    ['0', '1', '0', '1', '1', '0', '1', '0', '0'],
+    ['0', '1', '1', '0', '1', '0', '1', '1', '0'],
+    ['0', '0', '1', '0', '1', '0', '0', '1', '0'],
+    ['0', '1', '1', '1', '1', '1', '0', '3', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0'],
 ];
 
 let levelTwo = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
     [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0],
     [0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0],
     [0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0],
@@ -27,13 +28,13 @@ let levelTwo = [
     [0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0],
     [0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 3, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
 let levelThree = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
@@ -57,7 +58,7 @@ let levelThree = [
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
     [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
 // Global Variables----------
@@ -68,6 +69,26 @@ const c = canvas.getContext('2d');
 canvas.width = innerWidth; // CSS element
 canvas.height = innerHeight; // CSS element
 
+const boundaries = [];
+
+let maze = levelOne
+
+const mazeTwo = levelTwo.map(row => row.map(cell => cell.toString()));
+
+const mazeThree = levelThree.map(row => row.map(cell => cell.toString()));
+
+let startPoint = findStartPoint(maze);
+let endPoint = findEndPoint(maze);
+
+
+// --------function to generate images__________
+function createImage(src) {
+    const image = new Image();
+    image.src = src;
+    return image;
+}
+
+// ------------create class for maze boundary____________
 class Boundary {
     static width = 60;
     static height = 60;
@@ -81,20 +102,114 @@ class Boundary {
     }
 
     draw() {
-        if (this.image.complete) {
-            c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+        const image = this.image;
+        if (image.complete) {
+            c.drawImage(image, this.position.x, this.position.y, this.width, this.height);
         } else {
-            c.fillStyle = 'Purple';
-            c.fillRect(this.position.x, this.position.y, this.width, this.height);
+            image.onload = () => {
+                c.drawImage(image, this.position.x, this.position.y, this.width, this.height);
+            };
         }
     }
 }
 
-function createImage(src) {
-    const image = new Image();
-    image.src = src;
-    return image;
+// --------------create class to load different maze level arrays----------------------------
+class MazeManager {
+    constructor() {
+        this.currentMaze = null;
+        this.selectElement = document.getElementById('levelselect');
+        this.selectElement.addEventListener('change', () => {
+            this.setMazeLevel();
+        });
+        this.setMazeLevel();
+    }
+
+    setMazeLevel() {
+        const selectedLevel = parseInt(this.selectElement.value);
+
+        switch (selectedLevel) {
+            case 1:
+                maze = levelOne;
+                console.log("Level 1 selected");
+                break;
+
+            case 2:
+                maze = levelTwo.map(row => row.map(cell => cell.toString()));
+                console.log("Level 2 selected");
+                break;
+
+            case 3:
+                maze = levelThree.map(row => row.map(cell => cell.toString()));
+                console.log("Level 3 selected");
+                break;
+
+            default:
+                console.log('Select Maze Level');
+                return;
+        }
+    }
 }
+
+const mazeManager = new MazeManager();
+
+const beginButton = document.getElementById('beginButton');
+beginButton.addEventListener('click', createMaze);
+
+        function createMaze(){
+            boundaries.length=0;
+
+            maze.forEach((row, i) => {
+                row.forEach((symbol, j) => {
+                    switch (symbol) {
+                        case '0':
+                            boundaries.push(
+                                new Boundary({
+                                    position: {
+                                        x: 60 * j,
+                                        y: 60 * i,
+                                    },
+
+                                    image: 'Assets/img/sakuraTree.png',
+                                })
+                            );
+                            break;
+                    }
+                });
+            });
+        }
+
+        // -------functions to identify start point and endpoint-------------------
+
+        function findStartPoint(maze) {
+            for (let i = 0; i < maze.length; i++) {
+                for (let j = 0; j < maze[i].length; j++) {
+                    if (maze[i][j] === '2') {
+                        return { row: i, column: j };
+                    }
+                }
+            }
+            return null;
+        }
+        
+        function findEndPoint(maze) {
+            for (let i = 0; i < maze.length; i++) {
+                for (let j = 0; j < maze[i].length; j++) {
+                    if (maze[i][j] === '3') {
+                        return { row: i, column: j };
+                    }
+                }
+            }
+            return null;
+        }
+         
+        
+        
+        
+
+
+
+
+// ----------------Player Class-----------------
 
 const keys = {
     w: { pressed: false },
@@ -104,77 +219,12 @@ const keys = {
 };
 
 let lastKey = '';
-
-const maze = [
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '2', '0', '1', '1', '1', '1', '1', '0'],
-    ['0', '1', '1', '0', '1', '0', '0', '1', '0'],
-    ['0', '1', '0', '1', '1', '0', '1', '1', '0'],
-    ['0', '1', '0', '1', '1', '0', '1', '0', '0'],
-    ['0', '1', '1', '0', '1', '0', '1', '1', '0'],
-    ['0', '0', '1', '0', '1', '0', '0', '1', '0'],
-    ['0', '1', '1', '1', '1', '1', '0', '3', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0'],
-];
-
-const mazeTwo = levelTwo.map(row => row.map(cell => cell.toString()));
-
-const mazeThree = levelThree.map(row => row.map(cell => cell.toString()));
-
-const boundaries = [];
-
-maze.forEach((row, i) => {
-    row.forEach((symbol, j) => {
-        switch (symbol) {
-            case '0':
-                boundaries.push(
-                    new Boundary({
-                        position: {
-                            x: 60 * j,
-                            y: 60 * i,
-                        },
-                        image: 'Assets/img/sakuraTree.png',
-                    })
-                );
-                break;
-        }
-    });
-});
-
-function findStartPoint(maze){
-    for( let i=0, i, maze.length; i++){
-        for (let j= 0; j < maze[i].length; j++){
-            if (maze[i][j] === '2'){
-                return {row: i, column: j};
-            }
-        }
-    }
-    return null;
-}
-
-function findEndPoint(maze){
-    for( let i=0, i, maze.length; i++){
-        for (let j= 0; j < maze[i].length; j++){
-            if (maze[i][j] === '3'){
-                return {row: i, column: j};
-            }
-        }
-    }
-    return null;
-}
- 
-const startPoint = findStartPoint(maze);
-const endPoint = findEndPoint(maze);
-
-
-
-// Player Class
 class Player {
-    constructor(maze) {
-        this.position = { x: canvas.width / 2, y: canvas.height / 2 };
+    constructor(startPoint) {
+        this.position = { x: startPoint.column *59, y: startPoint.row *59 };
         this.velocity = { x: 0, y: 0 };
-        this.width = 60;
-        this.height = 60;
+        this.width = 45;
+        this.height = 45;
         this.imageSource = 'Assets/img/ninjaIdle.png'
         this.image = createImage(this.imageSource);
     }
@@ -194,28 +244,28 @@ class Player {
         this.position.y += this.velocity.y;
     }
 }
-// write calculate start position function here
 
-const player = new Player(maze); // Initialize the player
+
+const player = new Player(startPoint); // Initialize the player
 
 function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0, 0, canvas.width, canvas.height);
 
     boundaries.forEach((boundary) => {
-        boundary.draw()
-      // Check for collision
-      if (
-        player.position.y - player.height / 2 <= boundary.position.y + boundary.height &&
-        player.position.x + player.width / 2 >= boundary.position.x &&
-        player.position.y + player.height / 2 >= boundary.position.y &&
-        player.position.x - player.width / 2 <= boundary.position.x + boundary.width
-    ) {
-        console.log('collision detected')
-        player.velocity.x = 0
-        player.velocity.y = 0
-    };
-});
+        boundary.draw();
+
+        if (
+            player.position.y - player.height / 2 <= boundary.position.y + boundary.height &&
+            player.position.x + player.width / 2 >= boundary.position.x &&
+            player.position.y + player.height / 2 >= boundary.position.y &&
+            player.position.x - player.width / 2 <= boundary.position.x + boundary.width
+        ) {
+            console.log('collision detected');
+            player.velocity.x = 0;
+            player.velocity.y = 0;
+        }
+    });
 
     player.update();
     player.velocity.x = 0;
@@ -231,6 +281,7 @@ function animate() {
         player.velocity.x = 20;
     }
 }
+
 
 window.addEventListener('keydown', ({ key }) => {
     switch (key) {
