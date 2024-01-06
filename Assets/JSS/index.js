@@ -63,6 +63,9 @@ const c = canvas.getContext('2d')
 
 canvas.width = innerWidth //css element
 canvas.height = innerHeight //css element
+
+// Drawing the boundaries
+
 class Boundary {
     static width = 60;
     static height = 60;
@@ -129,13 +132,58 @@ maze.forEach((row, i) => {
     });
 
 
-// Drawing the boundaries
+
 boundaries.forEach(boundary => {
     boundary.draw();
 })
 
+class Player{
+    constructor(){
+        this.position = this.position
+        this.velocity = this.velocity
+        this.image = image;
+        this.image = new Image();
+        this.image.src = this.image; 
+    }
 
+    draw() {
+       
+        if (this.image.complete) {
+            c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+        } else {
+            c.fillStyle = 'yellow';
+            c.fillRect(this.position.x, this.position.y, this.width, this.height);
+        }
+    }
+}
 
+class NPC {
+    constructor (){
+        this.position = this.position
+        this.velocity = this.velocity
+        this.image = image;
+        this.image = new Image();
+        this.image.src = this.image;
+    }
+}
+
+window.addEventListener('keydown', ({key}) =>{
+    switch (key) {
+        case 'w':
+            player.velocity.y= -5
+            break
+            case 'a':
+            player.velocity.x= -5
+            break
+            case 's':
+            player.velocity.y= 5
+            break
+            case 'd':
+            player.velocity.x= 5
+            break
+    }
+
+})
 
 
 // let main = document.getElementById('main');
