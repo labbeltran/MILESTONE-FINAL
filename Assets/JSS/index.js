@@ -140,7 +140,8 @@ class Player {
         this.velocity = { x: 0, y: 0 };
         this.width = 60;
         this.height = 60;
-        this.image = createImage('Assets/img/player.png');
+        this.imageSource = 'Assets/img/ninjaIdle.png'
+        this.image = createImage(this.imageSource);
     }
 
     draw() {
