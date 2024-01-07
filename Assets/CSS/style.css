@@ -19,7 +19,26 @@
 
 h1 {
     font-size: 80px;
+    color: #ffffff;
+    font-family: 'AmburegulRegular';
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    text-decoration: ;
     
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.flashing-text {
+    font-size: 80px;
+    text-align: center;
+    margin-top: 10px;
+    animation: flash 1s linear infinite;
+    margin-top: 2em;
 }
 
 main{
@@ -42,6 +61,10 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'AmburegulRegular';
+    font-weight: normal;
+    font-style: normal;
+    z-index: 2;
 }
     
 canvas-container {
@@ -49,8 +72,16 @@ canvas-container {
 }
 
 canvas {
-    display: block;    
-    height: 90vh;
+    display: block;  
+
+    border-style: double;  
+    border-color: blueviolet;
+    height: 80vh;
+    width: 100vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     /* Add other styles as needed */
 }
 /* #maze-container{
