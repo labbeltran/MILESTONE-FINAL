@@ -21,7 +21,7 @@ let levelTwo = [
     [0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0],
     [0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
     [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
-    [0, 1,0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0],
+    [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0],
     [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
     [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0],
     [0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0],
@@ -34,8 +34,8 @@ let levelTwo = [
 
 let levelThree = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
     [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -256,115 +256,75 @@ class Player {
 
 const player = new Player(startPoint); // Initialize the player
 
-function rectangleWithRectangleCollision({rectangle1, rectangle2}){
-    return(rectangle1.position.y - rectangle1.height + rectangle1.velocity.y  <= rectangle2.position.y + rectangle2.height &&
-        rectangle1.position.x + rectangle1.width + rectangle1.velocity.x  >= rectangle2.position.x &&
-        rectangle1.position.y + rectangle1.height + rectangle1.velocity.y >= rectangle2.position.y &&
-        rectangle1.position.x - rectangle1.width + rectangle1.velocity.x <= rectangle2.position.x + rectangle2.width
+function rectangleWithRectangleCollision(player, maze) {
+    const rect1 = {
+        x: player.position.x + player.velocity.x,
+        y: player.position.y + player.velocity.y,
+        width: player.width,
+        height: player.height,
+    };
 
-    )
+    const rect2 = {
+        x: maze.position.x,
+        y: maze.position.y,
+        width: maze.width,
+        height: maze.height,
+    };
+
+    // Adjust the collision logic based on the direction of movement
+    const isCollision =
+        rect1.y < rect2.y + rect2.height &&
+        rect1.y + rect1.height > rect2.y &&
+        rect1.x < rect2.x + rect2.width &&
+        rect1.x + rect1.width > rect2.x;
+
+    return isCollision;
 }
+
+
 function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Draw and check collision with maze
     boundaries.forEach((boundary) => {
         boundary.draw();
 
-        if (
-            rectangleWithRectangleCollision({
-                rectangle1: player,
-                rectangle2: boundary
-            })
-        ) {
+        if (rectangleWithRectangleCollision(player, boundary)) {
             console.log('collision detected');
-            player.velocity.x = 0;
-            player.velocity.y = 0;
+
+            // Adjust player position based on collision
+            player.position.x -= player.velocity.x;
+            player.position.y -= player.velocity.y;
         }
     });
 
-    player.update();
-    player.velocity.x = 0;
-    player.velocity.y = 0;
-
+    // Update player position based on keys
     if (keys.w.pressed && lastKey === 'w') {
-        for (let i=0; i< boundaries.length; i++){
-            const boundary = boundaries[i]
-            if(
-                rectangleWithRectangleCollision({
-                    rectangle1: {...player, velocity: {
-                        x:0,
-                        y:-4
-                    }
-                },
-                rectangle: boundary
-                })
-            ){
-                player.velocity.y =0
-                break
-            } else{
-                player.velocity.y = -4
-            }
-        }
+        player.velocity.y = -2;
+        player.velocity.x = 0;
     } else if (keys.a.pressed && lastKey === 'a') {
-        for (let i=0; i< boundaries.length; i++){
-            const boundary = boundaries[i]
-            if(
-                rectangleWithRectangleCollision({
-                    rectangle1: {...player, velocity: {
-                        x:-4,
-                        y:0
-                    }
-                },
-                rectangle: boundary
-                })
-            ){
-                player.velocity.x = 0
-                break
-            } else{
-                player.velocity.x = -4
-            }
-        }
+        player.velocity.x = -2;
+        player.velocity.y = 0;
     } else if (keys.s.pressed && lastKey === 's') {
-        for (let i=0; i< boundaries.length; i++){
-            const boundary = boundaries[i]
-            if(
-                rectangleWithRectangleCollision({
-                    rectangle1: {...player, velocity: {
-                        x:0,
-                        y:4
-                    }
-                },
-                rectangle: boundary
-                })
-            ){
-                player.velocity.y =0
-                break
-            } else{
-                player.velocity.y = 4
-            }
-        }
+        player.velocity.y = 2;
+        player.velocity.x = 0;
     } else if (keys.d.pressed && lastKey === 'd') {
-        for (let i=0; i< boundaries.length; i++){
-            const boundary = boundaries[i]
-            if(
-                rectangleWithRectangleCollision({
-                    rectangle1: {...player, velocity: {
-                        x: 4,
-                        y: 0
-                    }
-                },
-                rectangle: boundary
-                })
-            ){
-                player.velocity.x = 4
-                break
-            } else{
-                player.velocity.x = 0
-            }
-        }
+        player.velocity.x = 2;
+        player.velocity.y = 0;
+    } else {
+        player.velocity.x = 0;
+        player.velocity.y = 0;
     }
+
+    // Update player position
+    player.position.x += player.velocity.x;
+    player.position.y += player.velocity.y;
+
+    // Draw and update player
+    player.update();
 }
+
 
 
 window.addEventListener('keydown', ({ key }) => {
