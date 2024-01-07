@@ -56,6 +56,10 @@ main{
     align-items: center;
 }
 
+.music-player{
+    justify-content: right;
+}
+
 .game-board{
     display: flex;
     justify-content: center;
