@@ -65,13 +65,13 @@ let levelThree = [
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
-
+const boundaries = [];
 canvas.width = innerWidth; // CSS element
 canvas.height = innerHeight; // CSS element
 
 
 
-const boundaries = [];
+
 
 let maze = levelOne
 
@@ -96,10 +96,10 @@ class Boundary {
     static width = 60;
     static height = 60;
 
-    constructor({ position, image, cellSize }) {
+    constructor({ position, image, boundarySize }) {
         this.position = position;
-        this.width = cellSize;
-        this.height = cellSize;
+        this.width = boundarySize;
+        this.height = boundarySize;
         this.image = image;
         this.image = createImage(this.image);
     }
@@ -164,8 +164,9 @@ beginButton.addEventListener('click', function() {
 });
 
         function createMaze(){
+            boundaries.length = 0;
             const cellSize = selectedLevel === 3 ? 10: 60;
-            boundaries.length=0;
+            const boundarySize = selectedLevel === 3 ? 10: 60;
 
             maze.forEach((row, i) => {
                 row.forEach((symbol, j) => {
@@ -180,6 +181,7 @@ beginButton.addEventListener('click', function() {
 
                                     image: 'Assets/img/sakuraTree.png',
                                     cellSize,
+                                    boundarySize,
                                 })
                             );
                             break;

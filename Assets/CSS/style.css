@@ -44,8 +44,18 @@ main{
     align-items: center;
 }
     
+canvas-container {
+    position: relative;
+    height: 100vh;
+}
 
-
+canvas {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    transform: translate(-55%, -25%);
+    /* Add other styles as needed */
+}
 /* #maze-container{
     display: grid;
     justify-content: center;
