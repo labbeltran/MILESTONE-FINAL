@@ -78,13 +78,13 @@ let endPoint = findEndPoint(maze);
 let selectedLevel = 1;
 
 
-window.onload = function() {
-    var audio = document.getElementById("background-music");
-    audio.play().catch(error => {
-        console.error("Audio playback failed:", error);
-        // Handle playback failure, like showing a play button for user interaction
-    });
-};
+// window.onload = function() {
+//     const audio = document.getElementById("background-music");
+//     audio.play().catch(error => {
+//         console.error("Audio playback failed:", error);
+//         // Handle playback failure, like showing a play button for user interaction
+//     });
+// };
 
 // --------function to generate images__________
 function createImage(src) {
