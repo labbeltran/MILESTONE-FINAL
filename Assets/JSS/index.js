@@ -69,6 +69,8 @@ const c = canvas.getContext('2d');
 canvas.width = innerWidth; // CSS element
 canvas.height = innerHeight; // CSS element
 
+
+
 const boundaries = [];
 
 let maze = levelOne
@@ -231,8 +233,8 @@ class Player {
     constructor(startPoint) {
         this.position = { x: startPoint.column *60, y: startPoint.row *60 };
         this.velocity = { x: 0, y: 0 };
-        this.width = Boundary.width/2 + Boundary.width/4;
-        this.height = Boundary.height/2 + Boundary.height/4;
+        this.width = Boundary.width/3 + Boundary.width/4;
+        this.height = Boundary.height/3 + Boundary.height/4;
         this.imageSource = 'Assets/img/ninjaIdle.png'
         this.image = createImage(this.imageSource);
     }
@@ -256,7 +258,7 @@ class Player {
 
 const player = new Player(startPoint); // Initialize the player
 
-function rectangleWithRectangleCollision(player, maze) {
+function rectangleWithRectangleCollision(player, boundary) {
     const rect1 = {
         x: player.position.x + player.velocity.x,
         y: player.position.y + player.velocity.y,
@@ -265,20 +267,30 @@ function rectangleWithRectangleCollision(player, maze) {
     };
 
     const rect2 = {
-        x: maze.position.x,
-        y: maze.position.y,
-        width: maze.width,
-        height: maze.height,
+        x: boundary.position.x,
+        y: boundary.position.y,
+        width: boundary.width,
+        height: boundary.height,
     };
 
-    // Adjust the collision logic based on the direction of movement
-    const isCollision =
-        rect1.y < rect2.y + rect2.height &&
-        rect1.y + rect1.height > rect2.y &&
-        rect1.x < rect2.x + rect2.width &&
-        rect1.x + rect1.width > rect2.x;
+    const dx = rect1.x + rect1.width / 2 - (rect2.x + rect2.width / 2);
+    const dy = rect1.y + rect1.height / 2 - (rect2.y + rect2.height / 2);
+    const width = (rect1.width + rect2.width) / 2;
+    const height = (rect1.height + rect2.height) / 2;
+    const crossWidth = width * dy;
+    const crossHeight = height * dx;
 
-    return isCollision;
+    let collision = null;
+
+    if (Math.abs(dx) <= width && Math.abs(dy) <= height) {
+        if (crossWidth > crossHeight) {
+            collision = crossWidth > -crossHeight ? 'bottom' : 'left';
+        } else {
+            collision = crossWidth > -crossHeight ? 'right' : 'top';
+        }
+    }
+
+    return collision;
 }
 
 
@@ -288,15 +300,22 @@ function animate() {
 
     // Draw and check collision with maze
     boundaries.forEach((boundary) => {
-        boundary.draw();
-
         if (rectangleWithRectangleCollision(player, boundary)) {
             console.log('collision detected');
-
-            // Adjust player position based on collision
+    
+            // Adjust player position based on collision (X direction)
             player.position.x -= player.velocity.x;
-            player.position.y -= player.velocity.y;
+    
+            // Check and adjust player position (Y direction)
+            if (rectangleWithRectangleCollision(player, boundary)) {
+                player.position.y -= player.velocity.y;
+            }
+    
+            // Exit the loop to prevent additional collision checks
+            return;
         }
+    
+        boundary.draw();
     });
 
     // Update player position based on keys
@@ -366,6 +385,21 @@ window.addEventListener('keyup', ({ key }) => {
 });
 
 animate(); // Start the animation loop
+
+// ctx.save();
+
+// // Translate the canvas origin to the center
+// ctx.translate(canvas.width / 2, canvas.height / 2);
+
+// // Rotate the canvas by 45 degrees (in radians)
+// ctx.rotate(Math.PI *2);
+
+// // Draw something (e.g., a square)
+// ctx.fillStyle = 'blue';
+// ctx.fillRect(-50, -50, 100, 100);
+
+// // Restore the canvas state to its original state
+// ctx.restore();
 
 // let main = document.getElementById('main');
 // let maze = document.getElementById('maze-container');
