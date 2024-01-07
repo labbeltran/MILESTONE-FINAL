@@ -24,8 +24,13 @@ h1 {
     font-weight: normal;
     font-style: normal;
     text-align: center;
-    text-decoration: ;
     
+    
+}
+
+.timer-container{
+    font: red;
+    z-index: 3;
 }
 
 @keyframes flash {
@@ -82,6 +87,10 @@ canvas {
     left: 50%;
     transform: translate(-50%, -40%);
     /* Add other styles as needed */
+}
+
+#move-counter{
+    font: #ffffff;
 }
 /* #maze-container{
     display: grid;
