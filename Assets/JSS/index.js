@@ -155,8 +155,10 @@ class MazeManager {
 const mazeManager = new MazeManager();
 
 const beginButton = document.getElementById('beginButton');
-beginButton.addEventListener('click', () => {
-    createMaze();
+beginButton.addEventListener('click', function() {
+    mazeManager.setMazeLevel();
+    createMaze(); // Call createMaze when the button is clicked
+    
 });
 
         function createMaze(){
@@ -227,10 +229,10 @@ const keys = {
 let lastKey = '';
 class Player {
     constructor(startPoint) {
-        this.position = { x: startPoint.column *59, y: startPoint.row *59 };
+        this.position = { x: startPoint.column *60, y: startPoint.row *60 };
         this.velocity = { x: 0, y: 0 };
-        this.width = 45;
-        this.height = 45;
+        this.width = Boundary.width/2 + Boundary.width/4;
+        this.height = Boundary.height/2 + Boundary.height/4;
         this.imageSource = 'Assets/img/ninjaIdle.png'
         this.image = createImage(this.imageSource);
     }
@@ -254,6 +256,14 @@ class Player {
 
 const player = new Player(startPoint); // Initialize the player
 
+function rectangleWithRectangleCollision({rectangle1, rectangle2}){
+    return(rectangle1.position.y - rectangle1.height + rectangle1.velocity.y  <= rectangle2.position.y + rectangle2.height &&
+        rectangle1.position.x + rectangle1.width + rectangle1.velocity.x  >= rectangle2.position.x &&
+        rectangle1.position.y + rectangle1.height + rectangle1.velocity.y >= rectangle2.position.y &&
+        rectangle1.position.x - rectangle1.width + rectangle1.velocity.x <= rectangle2.position.x + rectangle2.width
+
+    )
+}
 function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0, 0, canvas.width, canvas.height);
@@ -262,10 +272,10 @@ function animate() {
         boundary.draw();
 
         if (
-            player.position.y - player.height / 2 <= boundary.position.y + boundary.height &&
-            player.position.x + player.width / 2 >= boundary.position.x &&
-            player.position.y + player.height / 2 >= boundary.position.y &&
-            player.position.x - player.width / 2 <= boundary.position.x + boundary.width
+            rectangleWithRectangleCollision({
+                rectangle1: player,
+                rectangle2: boundary
+            })
         ) {
             console.log('collision detected');
             player.velocity.x = 0;
@@ -278,13 +288,81 @@ function animate() {
     player.velocity.y = 0;
 
     if (keys.w.pressed && lastKey === 'w') {
-        player.velocity.y = -20;
+        for (let i=0; i< boundaries.length; i++){
+            const boundary = boundaries[i]
+            if(
+                rectangleWithRectangleCollision({
+                    rectangle1: {...player, velocity: {
+                        x:0,
+                        y:-4
+                    }
+                },
+                rectangle: boundary
+                })
+            ){
+                player.velocity.y =0
+                break
+            } else{
+                player.velocity.y = -4
+            }
+        }
     } else if (keys.a.pressed && lastKey === 'a') {
-        player.velocity.x = -20;
+        for (let i=0; i< boundaries.length; i++){
+            const boundary = boundaries[i]
+            if(
+                rectangleWithRectangleCollision({
+                    rectangle1: {...player, velocity: {
+                        x:-4,
+                        y:0
+                    }
+                },
+                rectangle: boundary
+                })
+            ){
+                player.velocity.x = 0
+                break
+            } else{
+                player.velocity.x = -4
+            }
+        }
     } else if (keys.s.pressed && lastKey === 's') {
-        player.velocity.y = 20;
+        for (let i=0; i< boundaries.length; i++){
+            const boundary = boundaries[i]
+            if(
+                rectangleWithRectangleCollision({
+                    rectangle1: {...player, velocity: {
+                        x:0,
+                        y:4
+                    }
+                },
+                rectangle: boundary
+                })
+            ){
+                player.velocity.y =0
+                break
+            } else{
+                player.velocity.y = 4
+            }
+        }
     } else if (keys.d.pressed && lastKey === 'd') {
-        player.velocity.x = 20;
+        for (let i=0; i< boundaries.length; i++){
+            const boundary = boundaries[i]
+            if(
+                rectangleWithRectangleCollision({
+                    rectangle1: {...player, velocity: {
+                        x: 4,
+                        y: 0
+                    }
+                },
+                rectangle: boundary
+                })
+            ){
+                player.velocity.x = 4
+                break
+            } else{
+                player.velocity.x = 0
+            }
+        }
     }
 }
 
@@ -341,23 +419,7 @@ animate(); // Start the animation loop
 
 // // ----Create maze------
 
-// function createMaze() {
-
-//     switchLevel(document.getElementById("levelselect").value);
-//     setRowAndColumn(mazeArray.length,mazeArray[0].length);
-
-//     for (let i = 0; i < mazeArray.length; i++) {
-//         for (let j = 0; j < mazeArray[i].length; j++) {
-//             const cell = document.createElement('div');
-//             cell.classList.add('cell');
-
-//             if (mazeArray[i][j] === 0) {
-//                 cell.classList.add('wall');
-//             }
-
-//             mazeContainer.appendChild(cell);
-//         }
-//     }
+//s
 
 
 //     createNinja((levelOneStart[0]),(levelOneStart[1]));
